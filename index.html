@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Page with Functional Bugs</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+main {
+    padding: 2em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+input {
+    margin-bottom: 1em;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Demo Page</h1>
+    </header>
+    <main>
+        <section id="registration">
+            <h2>Register</h2>
+            <form id="registrationForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="product">
+                <h3>Product 1</h3>
+                <p>This is a great product.</p>
+                <button class="more-info">Подробнее</button>
+            </div>
+            <div class="product">
+                <h3>Product 2</h3>
+                <p>This is another great product.</p>
+                <button class="more-info">Подробнее</button>
+            </div>
+        </section>
+    </main>
+    <script>
+      document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Registration successful!'); // Bug: Form submission always shows success message without validation
+});
+
+document.querySelectorAll('.more-info').forEach(function(button) {
+    button.addEventListener('click', function() {
+        alert('Showing more info...'); // Bug: The button doesn't navigate to a detailed product page
+    });
+});
+
+    </script>
+</body>
+</html>
